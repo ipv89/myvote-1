@@ -1,12 +1,14 @@
 <?php
 //This code has not been tested yet and is not complete!! I have tried to implement some basic integrity checks
 
+//db include goes here
 
 //example data
 $result = '{"id": "abc123", "name": "Jane", "address":"12 a street", "city":"Wellington", "dob": "31/5/1956", "pob":"Wellington",
  "email":"me@email.com","gender":"Female", "phone":"02152526", "enrolled": "1"}';
 $person = json_decode($result, true);
 //for testing
+
 //print_r($person);
 
 //not working but its a check we should so
@@ -16,7 +18,7 @@ if($person['id'] === null){
 }
 
 //query the database for the id that has been provided
-$record_check = mysql_query("SELECT * FROM table1 WHERE id = '".$person['name']."' ");
+$record_check = mysql_query("SELECT * FROM Person WHERE id = '".$person['name']."' ");
 $check_result = mysql_num_rows($record_check);
 
 //Check to see if the person exists
